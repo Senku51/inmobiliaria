@@ -1,0 +1,1 @@
+aquí van las clases con sus atributos getters y setters necesarios
