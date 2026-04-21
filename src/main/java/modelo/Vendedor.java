@@ -52,7 +52,86 @@ public class Vendedor {
      */
     public void setCodEmpleado(String codEmpleado) { this.codEmpleado = codEmpleado; }
 
-    // ... Repetir estructura similar para el resto de getters y setters ...
+    /**
+     *
+     * @return muestra el nombre
+     */
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * modificar nombre
+     * @param nombre
+     */
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    /**
+     *
+     * @return muestra telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     *
+     * @param telefono cambia telefono
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    /**
+     *
+     * @return muestra la fecha de nacimiento
+     */
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
+    /**
+     *
+     * @param fechaNacimiento cambia la fecha de nacimiento
+     */
+    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+        this.fechaNacimiento = fechaNacimiento;
+    }
+
+    /**
+     *
+     * @return muestra porcentaje comision
+     */
+    public double getPorcentajeComision() {
+        return porcentajeComision;
+    }
+
+    /**
+     * cambia porcentaje comision
+     * @param porcentajeComision
+     */
+    public void setPorcentajeComision(double porcentajeComision) {
+        this.porcentajeComision = porcentajeComision;
+    }
+
+    /**
+     *
+     * @return muestra id agencia
+     */
+    public int getIdAgencia() {
+        return idAgencia;
+    }
+
+    /**
+     *
+     * @param idAgencia modifica id agencia
+     */
+    public void setIdAgencia(int idAgencia) {
+        this.idAgencia = idAgencia;
+    }
 
     /**
      * Devuelve una representación en cadena del vendedor.
