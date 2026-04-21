@@ -2,6 +2,8 @@ package dao;
 
 import conexion.ConexionBD;
 import modelo.Agencia;
+import modelo.Titular;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -164,20 +166,30 @@ public class AgenciaDAOImpl implements AgenciaDAO {
     }
 
     private Agencia mapearAgencia(ResultSet rs, Connection con) throws SQLException {
+        // 1. Instanciamos la Agencia con los datos básicos que vienen en el ResultSet
         Agencia agencia = new Agencia(
                 rs.getString("direccion"),
                 rs.getString("fax"),
-                rs.getString("zona_actuacion"),
-                rs.getString("titular")
+                rs.getString("zona_actuacion")
         );
 
-        // Buscamos los teléfonos asociados para rellenar la lista del objeto
-        PreparedStatement ps = con.prepareStatement(SELECT_TELS);
-        ps.setString(1, agencia.getZonaActuacion());
-        ResultSet rsTel = ps.executeQuery();
-        while (rsTel.next()) {
-            agencia.agregarTelefono(rsTel.getString("telefono"));
+        // 2. Cargamos el Titular asociado
+        TitularDAO titularDao = new TitularDAOImpl();
+        Titular titularAsociado = titularDao.buscarPorAgencia(agencia.getZonaActuacion());
+
+        agencia.setTitular(titularAsociado);
+
+        // 3. Cargamos la lista de teléfonos desde la tabla auxiliar
+        String sqlTelefonos = "SELECT telefono FROM agencia_telefonos WHERE zona_agencia = ?";
+        try (PreparedStatement psTel = con.prepareStatement(sqlTelefonos)) {
+            psTel.setString(1, agencia.getZonaActuacion());
+            try (ResultSet rsTel = psTel.executeQuery()) {
+                while (rsTel.next()) {
+                    agencia.agregarTelefono(rsTel.getString("telefono"));
+                }
+            }
         }
+
         return agencia;
     }
 }
