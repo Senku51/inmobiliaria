@@ -1,0 +1,1 @@
+clase singelton necesaria para establecer conexion con la base de datos, esta clase se va a usar en toda la aplicacion para establecer conexion con la base de datos y realizar las operaciones necesarias
