@@ -1,2 +1,2 @@
 # inmobiliaria
-base de datos de una unmobiliaria
+base de datos de una inmobiliaria
