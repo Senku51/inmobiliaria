@@ -17,7 +17,7 @@ public class Titular {
     public Titular(String codigoEmpleado, String nombre, String telefono, LocalDate fechaNacimiento, String titulacion) {
         setCodigoEmpleado(codigoEmpleado);
         setNombre(nombre);
-        this.telefono = telefono;
+        setTelefono(telefono);
         setFechaNacimiento(fechaNacimiento);
         setTitulacion(titulacion);
     }
@@ -28,6 +28,13 @@ public class Titular {
             throw new IllegalArgumentException("El código de empleado no puede estar vacío");
         }
         this.codigoEmpleado = codigoEmpleado;
+    }
+
+    public void setTelefono(String telefono) {
+        if (telefono == null || telefono.isBlank() || !telefono.matches("[0-9]{9}")) {
+            throw new IllegalArgumentException("No puede estar vacío, nulo o distinto de un número de nueve dígitos");
+        }
+        this.telefono = telefono;
     }
 
     public void setNombre(String nombre) {
