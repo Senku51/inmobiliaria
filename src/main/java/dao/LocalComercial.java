@@ -1,4 +1,4 @@
-package modelo;
+package dao;
 
 /**
  * Especialización de Inmueble para representar locales comerciales.

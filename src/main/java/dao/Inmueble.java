@@ -1,4 +1,4 @@
-package modelo;
+package dao;
 
 /**
  * Clase abstracta que define los atributos comunes de cualquier inmueble.
