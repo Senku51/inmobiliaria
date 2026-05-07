@@ -1,11 +1,16 @@
 package dao;
 
-import modelo.LocalComercial;
-import modelo.Piso;
-
+import modelo.Inmueble;
 import java.util.List;
 
+/**
+ * Realizado por Carlos Martin Martin
+ */
 public interface InmuebleDAO {
-    List<Piso> filtrarPisos(int habitaciones, String gas, boolean exterior);
-    List<LocalComercial> filtrarLocales(boolean tieneLicencia);
+    void crearTabla();
+    void insertar(Inmueble inmueble);
+    Inmueble buscarPorCodigo(String codigo);
+    List<Inmueble> obtenerTodos();
+    void actualizar(Inmueble inmueble);
+    void eliminar(String codigo);
 }
