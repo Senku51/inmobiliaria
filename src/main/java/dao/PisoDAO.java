@@ -7,7 +7,7 @@ import modelo.Piso;
  * Interfaz para las operaciones de persistencia de la clase Piso.
  * Realizado por Carlos Martin Martin
  */
-public interface IPisoDAO {
+public interface PisoDAO {
     boolean insertar(Piso piso);
     boolean actualizar(Piso piso);
     boolean eliminar(String codigo);

@@ -7,7 +7,7 @@ import modelo.LocalComercial;
  * Interfaz que define las operaciones de persistencia para Locales Comerciales.
  * Realizado por Carlos Martin Martin
  */
-public interface ILocalComercialDAO {
+public interface LocalComercialDAO {
     boolean insertar(LocalComercial local);
     boolean actualizar(LocalComercial local);
     boolean eliminar(String codigo);

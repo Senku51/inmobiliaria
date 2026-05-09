@@ -9,7 +9,7 @@ import modelo.Piso;
  * Implementación en memoria del DAO para la clase Piso.
  * Realizado por Carlos Martin Martin
  */
-public class PisoDAOImpl implements IPisoDAO {
+public class PisoDAOImpl implements PisoDAO {
 
     // Almacenamiento temporal en memoria
     private static List<Piso> listaPisos = new ArrayList<>();
