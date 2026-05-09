@@ -9,7 +9,7 @@ import modelo.LocalComercial;
  * Gestiona la persistencia de los datos (en este caso, en memoria).
  * Realizado por Carlos Martin Martin
  */
-public class LocalComercialDAOImpl implements ILocalComercialDAO {
+public class LocalComercialDAOImpl implements LocalComercialDAO {
 
     // Simulamos una base de datos con una lista estática
     private static List<LocalComercial> listaLocales = new ArrayList<>();

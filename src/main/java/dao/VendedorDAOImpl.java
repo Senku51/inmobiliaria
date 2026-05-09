@@ -10,7 +10,7 @@ import modelo.Agencia;
  * Implementación del DAO para Vendedor.
 
  */
-public class VendedorDAOImpl implements IVendedorDAO {
+public class VendedorDAOImpl implements VendedorDAO {
 
     private static List<Vendedor> listaVendedores = new ArrayList<>();
 
