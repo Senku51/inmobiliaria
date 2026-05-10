@@ -9,6 +9,7 @@ import modelo.Vendedor;
  * Interfaz para las operaciones de persistencia de la clase Vendedor.
  */
 public interface VendedorDAO {
+    void crearTabla();
     boolean insertar(Vendedor vendedor);
     boolean actualizar(Vendedor vendedor);
     boolean eliminar(String codEmpleado);

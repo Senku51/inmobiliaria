@@ -8,6 +8,7 @@ import modelo.LocalComercial;
  * Realizado por Carlos Martin Martin
  */
 public interface LocalComercialDAO {
+    void crearTabla();
     boolean insertar(LocalComercial local);
     boolean actualizar(LocalComercial local);
     boolean eliminar(String codigo);
