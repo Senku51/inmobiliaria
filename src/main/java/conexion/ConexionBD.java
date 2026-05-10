@@ -5,14 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Clase utilitaria para gestionar la conexión a la base de datos.
- * Proporciona una conexión nueva por cada llamada, lo que evita
- * problemas de conexiones cerradas o compartidas entre operaciones.
- * Uso recomendado con try-with-resources:
- *   try (Connection con = ConexionBD.getConnection()) { ... }
- *
- * @author Daniel Lagares Paz
- * @since 21/04/2026
+ * Clase Singleton para gestionar una única conexión a la base de datos.
  */
 public class ConexionBD {
 
@@ -20,23 +13,38 @@ public class ConexionBD {
     private static final String USER     = "postgres";
     private static final String PASSWORD = "";
 
-    // Constructor privado: evita que se instancie la clase con 'new'
+    // Única instancia de la conexión
+    private static Connection connection = null;
+
+    // Constructor privado para evitar instanciación externa
     private ConexionBD() {}
 
     /**
-     * Devuelve una conexión nueva a la base de datos.
-     * Cada llamada abre una conexión independiente.
-     * El llamador es responsable de cerrarla (idealmente con try-with-resources).
-     *
-     * @return Connection lista para usar.
-     * @throws SQLException si no se puede establecer la conexión.
+     * Devuelve la instancia única de la conexión.
+     * Si no existe o está cerrada, la crea.
      */
     public static Connection getConnection() throws SQLException {
-        try {
-            Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("Driver de PostgreSQL no encontrado en el classpath.", e);
+        if (connection == null || connection.isClosed()) {
+            try {
+                connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            } catch (SQLException e) {
+                System.err.println("Error al conectar: " + e.getMessage());
+                throw e;
+            }
+        }
+        return connection;
+    }
+
+    /**
+     * Método para cerrar la conexión permanentemente cuando la app termine.
+     */
+    public static void closeConnection() {
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar la conexión: " + e.getMessage());
+            }
         }
     }
 }

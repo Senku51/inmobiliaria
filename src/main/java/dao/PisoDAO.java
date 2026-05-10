@@ -8,6 +8,7 @@ import modelo.Piso;
  * Realizado por Carlos Martin Martin
  */
 public interface PisoDAO {
+    void crearTabla();
     boolean insertar(Piso piso);
     boolean actualizar(Piso piso);
     boolean eliminar(String codigo);
